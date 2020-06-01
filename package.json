@@ -1,0 +1,31 @@
+{
+  "name": "crud-kruzer",
+  "version": "1.0.0",
+  "description": "Project CRUD-Kruzer - Fullstack Developer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/viniguidotti/crud-kruzer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/viniguidotti/crud-kruzer/issues"
+  },
+  "homepage": "https://github.com/viniguidotti/crud-kruzer#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.5",
+    "express": "^4.16.2",
+    "fs": "^0.0.1-security",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.5.7",
+    "mongoose": "^5.9.16",
+    "path": "^0.12.7"
+  }
+}
