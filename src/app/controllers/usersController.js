@@ -15,6 +15,18 @@ router.get('/', async (req, res) => {
     }
 });
 
+//Listagem Unica
+router.get('/:_id', async (req, res) => {
+    try {
+        const user = await Users.findById(req.params._id);
+        user.password = undefined;
+
+        return res.send(user);
+    } catch (err) {
+        return res.status(400).send({ error: 'Error updating user' });
+    }
+});
+
 //Criação
 router.post('/', async (req, res) => {
     try {
@@ -37,7 +49,10 @@ router.post('/', async (req, res) => {
 //Update de usuário
 router.put('/:_id', async (req, res) => {
     try {
-        const { name, lastName, email, password, birthday, updatedAt } = req.body;
+        const { name, email, password, birthday, updatedAt } = req.body;
+
+        if (await Users.findOne({ email }))
+        return res.status(400).send({ error: 'E-mail already used' });
 
         const user = await Users.findByIdAndUpdate(req.params._id, { 
             name,
