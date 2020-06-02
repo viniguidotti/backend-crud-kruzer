@@ -51,9 +51,6 @@ router.put('/:_id', async (req, res) => {
     try {
         const { name, email, password, birthday, updatedAt } = req.body;
 
-        if (await Users.findOne({ email }))
-        return res.status(400).send({ error: 'E-mail already used' });
-
         const user = await Users.findByIdAndUpdate(req.params._id, { 
             name,
             email, 
