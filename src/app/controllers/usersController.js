@@ -5,7 +5,7 @@ const Users = require('../models/user');
 const router = express.Router();
 
 //Listagem Geral
-router.get('/', async (req, res) => {
+router.get('/user', async (req, res) => {
     try {
         const user = await Users.find();
 
@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 });
 
 //Listagem Unica
-router.get('/:_id', async (req, res) => {
+router.get('/user/:_id', async (req, res) => {
     try {
         const user = await Users.findById(req.params._id);
         user.password = undefined;
@@ -28,7 +28,7 @@ router.get('/:_id', async (req, res) => {
 });
 
 //Criação
-router.post('/', async (req, res) => {
+router.post('/user', async (req, res) => {
     try {
         const { name, lastName, email, password, birthday } = req.body;
         if (await Users.findOne({ email }))
@@ -47,7 +47,7 @@ router.post('/', async (req, res) => {
 });
 
 //Update de usuário
-router.put('/:_id', async (req, res) => {
+router.put('/user/:_id', async (req, res) => {
     try {
         const { name, email, password, birthday, updatedAt } = req.body;
 
@@ -70,7 +70,7 @@ router.put('/:_id', async (req, res) => {
 });
 
 //Deletar
-router.delete('/:_id', async (req, res) => {
+router.delete('/user/:_id', async (req, res) => {
     try {
         await Users.findByIdAndRemove(req.params._id);
         
@@ -81,4 +81,5 @@ router.delete('/:_id', async (req, res) => {
     res.send({ user: req.userId });
 });
 
-module.exports = app => app.use('/users', router);
+//module.exports = app => app.use('/users', router);
+module.exports = app => app.use('', router);
